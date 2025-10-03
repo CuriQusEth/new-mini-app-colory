@@ -7,8 +7,7 @@ const ROOT_URL = 'https://base-app-colory.vercel.app/';
  *
  * @see {@link https://miniapps.farcaster.xyz/docs/guides/publishing}
  */
-export const minikitConfig = {
-  
+export const minikitConfig =
   "accountAssociation": {
     "header": "eyJmaWQiOjUwMzg5MiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDQ1YWZDNWQ1MzA4ZTM0ODJCMEU4ZEVBNTRGM2JjMTRCNTkxQzgzQzkifQ",
     "payload": "eyJkb21haW4iOiJuZXctbWluaS1hcHAtY29sb3J5LnZlcmNlbC5hcHAifQ",
