@@ -1,4 +1,4 @@
-const ROOT_URL =https://base-app-colory.vercel.app/
+const ROOT_URL = https://base-app-colory.vercel.app/
   process.env.NEXT_PUBLIC_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
 
