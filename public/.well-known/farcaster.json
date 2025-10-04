@@ -14,6 +14,7 @@
     "description": "A simple and fun game designed to improve memory and focus. Remember and repeat color sequences that get longer as you progress.",
     "screenshotUrls": ["https://i.imgur.com/jrMQRXCl.png"],
     "iconUrl": "https://i.imgur.com/jrMQRXCl.png",
+    "imageUrl": "https://i.imgur.com/jrMQRXCl.png",
     "splashImageUrl": "https://i.imgur.com/jrMQRXCl.png",
     "splashBackgroundColor": "#000000",
     "homeUrl": "https://base-app-colory.vercel.app/",
