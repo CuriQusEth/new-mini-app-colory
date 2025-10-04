@@ -11,7 +11,7 @@
     "version": "1",
     "name": "COLORY",
     "subtitle": "Your AI Ad Companion",
-    "description": "Ads",
+    "description": "Track and manage your advertising campaigns with AI-powered insights and analytics.",
     "screenshotUrls": ["https://base-app-colory.vercel.app/screenshot-portrait.png"],
     "iconUrl": "https://base-app-colory.vercel.app/blue-icon.png",
     "splashImageUrl": "https://base-app-colory.vercel.app/blue-hero.png",
@@ -21,6 +21,9 @@
     "primaryCategory": "social",
     "tags": ["marketing", "ads", "quickstart", "waitlist"],
     "heroImageUrl": "https://base-app-colory.vercel.app/blue-hero.png",
+    "tagline": "AI-Powered Ad Management",
+    "ogTitle": "COLORY - Your AI Ad Companion",
+    "ogDescription": "Track and manage your advertising campaigns with AI-powered insights.",
     "ogImageUrl": "https://base-app-colory.vercel.app/blue-hero.png"
   }
 }
