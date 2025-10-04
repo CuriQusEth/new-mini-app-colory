@@ -12,18 +12,18 @@
     "name": "Color Memory",
     "subtitle": "COLORFUL",
     "description": "A simple and fun game designed to improve memory and focus. Remember and repeat color sequences that get longer as you progress.",
-    "screenshotUrls": ["https://base-app-colory.vercel.app/screenshot-portrait.png"],
-    "iconUrl": "https://base-app-colory.vercel.app/blue-icon.png",
-    "splashImageUrl": "https://base-app-colory.vercel.app/blue-hero.png",
+    "screenshotUrls": ["https://i.imgur.com/jrMQRXCl.png"],
+    "iconUrl": "https://i.imgur.com/jrMQRXCl.png",
+    "splashImageUrl": "https://i.imgur.com/jrMQRXCl.png",
     "splashBackgroundColor": "#000000",
     "homeUrl": "https://base-app-colory.vercel.app/",
     "webhookUrl": "https://base-app-colory.vercel.app/api/webhook",
     "primaryCategory": "games",
     "tags": ["games", "memory", "puzzle", "brain"],
-    "heroImageUrl": "https://base-app-colory.vercel.app/blue-hero.png",
+    "heroImageUrl": "https://i.imgur.com/jrMQRXCl.png",
     "tagline": "Train Your Brain",
     "ogTitle": "Color Memory - Train Your Brain",
     "ogDescription": "A simple and fun game designed to improve memory and focus.",
-    "ogImageUrl": "https://base-app-colory.vercel.app/blue-hero.png"
+    "ogImageUrl": "https://i.imgur.com/jrMQRXCl.png"
   }
 }
