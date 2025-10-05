@@ -23,27 +23,25 @@ export default function Home() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  // Initialize the miniapp
-  useEffect(() => {
-    if (!isFrameReady) {
-      setFrameReady();
-    }
-  }, [setFrameReady, isFrameReady]);
-
-  // Signal that the app is ready to display
+  // Initialize the miniapp and signal ready
   useEffect(() => {
     const initializeApp = async () => {
       try {
+        // Set frame ready first
+        if (!isFrameReady) {
+          setFrameReady();
+        }
+        
+        // Signal that the app is ready to display
         await sdk.actions.ready();
+        console.log("App ready signal sent successfully");
       } catch (error) {
-        console.error("Failed to signal ready state:", error);
+        console.error("Failed to initialize app:", error);
       }
     };
 
-    if (isFrameReady) {
-      initializeApp();
-    }
-  }, [isFrameReady]);
+    initializeApp();
+  }, [setFrameReady, isFrameReady]);
  
   
 
