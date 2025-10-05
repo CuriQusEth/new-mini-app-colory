@@ -44,39 +44,3 @@ export async function GET() {
     }
   });
 }
-    },
-  };
-
-  return NextResponse.json(manifest, {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
-}
-      tagline: "Train Your Brain",
-      ogTitle: "Color Memory Game",
-      ogDescription:
-        "A simple and fun game designed to improve memory and focus.",
-      ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
-    }
-  };
-
-  return NextResponse.json(manifest, {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
-}
-      ogImageUrl: "https://base-app-colory.vercel.app/"
-    }
-  };
-
-  return NextResponse.json(manifest, {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
-}
