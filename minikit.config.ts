@@ -18,7 +18,7 @@ export const minikitConfig = {
     splashImageUrl: "https://i.imgur.com/jrMQRXC.png",
     splashBackgroundColor: "#000000",
     homeUrl: "https://base-app-colory.vercel.app/",
-    webhookUrl: "https://new-mini-app-colory.vercel.app/api/webhook",
+    webhookUrl: "https://base-app-colory.vercel.app/",
     primaryCategory: "games",
     tags: ["games", "memory", "puzzle", "brain"],
     heroImageUrl: "https://i.imgur.com/jrMQRXC.png",
