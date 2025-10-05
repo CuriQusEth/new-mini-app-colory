@@ -42,3 +42,7 @@ export const minikitConfig = {
     ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
   }
 };
+      "A simple and fun game designed to improve memory and focus.",
+    ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
+  }
+};
