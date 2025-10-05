@@ -8,7 +8,6 @@ export async function GET() {
     "payload": "eyJkb21haW4iOiJuZXctbWluaS1hcHAtY29sb3J5LnZlcmNlbC5hcHAifQ",
     "signature": "MHhhYTU1MmE2MmE3Y2Y3NjRiMzI5OWVlYTU3NGJhNGYwODM3NjRhY2VhYzM2Zjc3MTY1MmM5MmRhZmZhZmY3MjMzNDhiYThmYWU2ZDAzNWJiNzQ4ZTJlYzZmNTFlYWQ5ZDIwNGNmZTg5MzFmMmUyMDU4ODI5NTU5ZGMyODM2MDcxYzFi"
   }
-
     baseBuilder: {
       allowedAddresses: ["0x29536D0bc1004ab274c4F0F59734Ad74D4559b7B"]
     },
