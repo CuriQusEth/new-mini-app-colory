@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useQuickAuth, useMiniKit } from "@coinbase/onchainkit/minikit";
 import { useRouter } from "next/navigation";
+import { sdk } from "@farcaster/miniapp-sdk";
 import { minikitConfig } from "../minikit.config";
 import styles from "./page.module.css";
 
@@ -29,35 +30,19 @@ export default function Home() {
     }
   }, [setFrameReady, isFrameReady]);
 
-  // Signal ready immediately on mount
+  // Signal ready after app is fully loaded
   useEffect(() => {
-    let mounted = true;
-    
-    const signalReady = async () => {
+    const callReady = async () => {
       try {
-        console.log("🔄 Loading Farcaster SDK...");
-        
-        // Dynamic import for client-side only
-        const { sdk } = await import("@farcaster/miniapp-sdk");
-        
-        console.log("✅ SDK loaded, calling ready()...");
+        // After your app is fully loaded and ready to display
         await sdk.actions.ready();
-        
-        if (mounted) {
-          console.log("✅ sdk.actions.ready() called successfully!");
-        }
+        console.log("✅ App ready signal sent");
       } catch (error) {
-        console.error("❌ Failed to call sdk.actions.ready():", error);
-        console.error("Error details:", error);
+        console.error("❌ Error calling ready:", error);
       }
     };
 
-    // Call immediately
-    signalReady();
-
-    return () => {
-      mounted = false;
-    };
+    callReady();
   }, []);
  
   
