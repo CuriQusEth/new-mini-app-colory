@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useQuickAuth, useMiniKit } from "@coinbase/onchainkit/minikit";
 import { useRouter } from "next/navigation";
 import { minikitConfig } from "../minikit.config";
-import { sdk } from "@farcaster/miniapp-sdk";
 import styles from "./page.module.css";
 
 interface AuthResponse {
@@ -36,13 +35,20 @@ export default function Home() {
     
     const signalReady = async () => {
       try {
-        console.log("Attempting to call sdk.actions.ready()...");
+        console.log("🔄 Loading Farcaster SDK...");
+        
+        // Dynamic import for client-side only
+        const { sdk } = await import("@farcaster/miniapp-sdk");
+        
+        console.log("✅ SDK loaded, calling ready()...");
         await sdk.actions.ready();
+        
         if (mounted) {
-          console.log("✅ sdk.actions.ready() called successfully");
+          console.log("✅ sdk.actions.ready() called successfully!");
         }
       } catch (error) {
         console.error("❌ Failed to call sdk.actions.ready():", error);
+        console.error("Error details:", error);
       }
     };
 
