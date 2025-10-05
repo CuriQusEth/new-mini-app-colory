@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const manifest = {
-    {
   "accountAssociation": {
     "header": "eyJmaWQiOjUwMzg5MiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDQ1YWZDNWQ1MzA4ZTM0ODJCMEU4ZEVBNTRGM2JjMTRCNTkxQzgzQzkifQ",
     "payload": "eyJkb21haW4iOiJuZXctbWluaS1hcHAtY29sb3J5LnZlcmNlbC5hcHAifQ",
