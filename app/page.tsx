@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useQuickAuth,useMiniKit } from "@coinbase/onchainkit/minikit";
+import { useQuickAuth, useMiniKit } from "@coinbase/onchainkit/minikit";
 import { useRouter } from "next/navigation";
 import { minikitConfig } from "../minikit.config";
+import { sdk } from "@farcaster/miniapp-sdk";
 import styles from "./page.module.css";
 
 interface AuthResponse {
@@ -22,12 +23,27 @@ export default function Home() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  // Initialize the  miniapp
+  // Initialize the miniapp
   useEffect(() => {
     if (!isFrameReady) {
       setFrameReady();
     }
   }, [setFrameReady, isFrameReady]);
+
+  // Signal that the app is ready to display
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        await sdk.actions.ready();
+      } catch (error) {
+        console.error("Failed to signal ready state:", error);
+      }
+    };
+
+    if (isFrameReady) {
+      initializeApp();
+    }
+  }, [isFrameReady]);
  
   
 
