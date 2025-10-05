@@ -21,6 +21,7 @@ export default function Home() {
   const { isFrameReady, setFrameReady, context } = useMiniKit();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
 
   // Initialize the miniapp
@@ -30,20 +31,27 @@ export default function Home() {
     }
   }, [setFrameReady, isFrameReady]);
 
-  // Signal ready after app is fully loaded
+  // Mark content as loaded
   useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  // Call ready when interface is ready to be displayed
+  useEffect(() => {
+    if (!isLoaded || !isFrameReady) return;
+
     const callReady = async () => {
       try {
         // After your app is fully loaded and ready to display
         await sdk.actions.ready();
-        console.log("✅ App ready signal sent");
+        console.log("✅ App ready - splash screen hidden");
       } catch (error) {
         console.error("❌ Error calling ready:", error);
       }
     };
 
     callReady();
-  }, []);
+  }, [isLoaded, isFrameReady]);
  
   
 
