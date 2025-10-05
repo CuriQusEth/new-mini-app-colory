@@ -24,7 +24,6 @@ export const minikitConfig = {
     splashImageUrl: "https://i.imgur.com/jrMQRXC.png",
     splashBackgroundColor: "#000000",
 
-    // Ana URL’ler
     homeUrl: "https://base-app-colory.vercel.app/",
     webhookUrl: "https://base-app-colory.vercel.app/",
 
@@ -34,14 +33,6 @@ export const minikitConfig = {
     tagline: "Train Your Brain",
     ogTitle: "Color Memory Game",
     ogDescription:
-      "A simple and fun game designed to improve memory and focus.",
-    ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
-  }
-};
-      "A simple and fun game designed to improve memory and focus.",
-    ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
-  }
-};
       "A simple and fun game designed to improve memory and focus.",
     ogImageUrl: "https://i.imgur.com/jrMQRXC.png"
   }
