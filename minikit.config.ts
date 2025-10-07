@@ -21,8 +21,8 @@ export const minikitConfig = {
     splashImageUrl: "https://i.imgur.com/jrMQRXC.png",
     splashBackgroundColor: "#000000",
 
-    homeUrl: "https://bascandyfruit.vercel.app/",
-    webhookUrl: "https://bascandyfruit.vercel.app/",
+    homeUrl: "https://base-app-colory.vercel.app/",
+    webhookUrl: "https://base-app-colory.vercel.app/",
 
     primaryCategory: "games",
     tags: ["games", "memory", "puzzle", "brain"],
