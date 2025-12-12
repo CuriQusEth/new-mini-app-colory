@@ -9,117 +9,100 @@ import styles from "./page.module.css";
 interface AuthResponse {
   success: boolean;
   user?: {
-    fid: number; // FID is the unique identifier for the user
+    fid: number;
     issuedAt?: number;
     expiresAt?: number;
   };
-  message?: string; // Error messages come as 'message' not 'error'
+  message?: string;
 }
-
 
 export default function Home() {
   const { isFrameReady, setFrameReady, context } = useMiniKit();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
 
-  // Initialize the miniapp
+  // Initialize MiniKit frame once
   useEffect(() => {
     if (!isFrameReady) {
       setFrameReady();
     }
-  }, [setFrameReady, isFrameReady]);
+  }, [isFrameReady, setFrameReady]);
 
-  // Mark content as loaded
+  // Trigger sdk.ready() once everything is loaded
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    if (!isFrameReady) return;
 
-  // Call ready when interface is ready to be displayed
-  useEffect(() => {
-    if (!isLoaded || !isFrameReady) return;
-
-    const callReady = async () => {
+    const init = async () => {
       try {
-        // After your app is fully loaded and ready to display
         await sdk.actions.ready();
-        console.log("✅ App ready - splash screen hidden");
-      } catch (error) {
-        console.error("❌ Error calling ready:", error);
+        console.log("✅ App ready — splash screen hidden");
+      } catch (err) {
+        console.error("❌ Error calling ready:", err);
       }
     };
 
-    callReady();
-  }, [isLoaded, isFrameReady]);
- 
-  
+    init();
+  }, [isFrameReady]);
 
-  // If you need to verify the user's identity, you can use the useQuickAuth hook.
-  // This hook will verify the user's signature and return the user's FID. You can update
-  // this to meet your needs. See the /app/api/auth/route.ts file for more details.
-  // Note: If you don't need to verify the user's identity, you can get their FID and other user data
-  // via `context.user.fid`.
-  // const { data, isLoading, error } = useQuickAuth<{
-  //   userFid: string;
-  // }>("/api/auth");
-
-  const { data: authData, isLoading: isAuthLoading, error: authError } = useQuickAuth<AuthResponse>(
-    "/api/auth",
-    { method: "GET" }
-  );
+  // QuickAuth to validate user identity
+  const {
+    data: authData,
+    isLoading: isAuthLoading,
+    error: authError,
+  } = useQuickAuth<AuthResponse>("/api/auth", { method: "GET" });
 
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    // Check authentication first
     if (isAuthLoading) {
-      setError("Please wait while we verify your identity...");
+      setError("Verifying your identity... please wait");
       return;
     }
 
     if (authError || !authData?.success) {
-      setError("Please authenticate to join the waitlist");
+      setError("Please authenticate before joining the waitlist");
       return;
     }
 
-    if (!email) {
+    if (!email.trim()) {
       setError("Please enter your email address");
       return;
     }
 
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
+      setError("Please enter a valid email");
       return;
     }
 
-    // TODO: Save email to database/API with user FID
-    console.log("Valid email submitted:", email);
-    console.log("User authenticated:", authData.user);
-    
-    // Navigate to success page
+    console.log("📧 Email submitted:", email);
+    console.log("👤 Authenticated user:", authData.user);
+
     router.push("/success");
   };
+
+  const displayName = context?.user?.displayName || "Friend";
 
   return (
     <div className={styles.container}>
       <button className={styles.closeButton} type="button">
         ✕
       </button>
-      
+
       <div className={styles.content}>
         <div className={styles.waitlistForm}>
-          <h1 className={styles.title}>Join {minikitConfig.miniapp.name.toUpperCase()}</h1>
-          
+          <h1 className={styles.title}>
+            Join {minikitConfig.miniapp.name.toUpperCase()}
+          </h1>
+
           <p className={styles.subtitle}>
-             Hey {context?.user?.displayName || "there"}, Get early access and be the first to experience the future of<br />
-            crypto marketing strategy.
+            Hey {displayName}, get early access and be the first to experience
+            the future of crypto marketing strategy.
           </p>
 
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -130,11 +113,11 @@ export default function Home() {
               onChange={(e) => setEmail(e.target.value)}
               className={styles.emailInput}
             />
-            
+
             {error && <p className={styles.error}>{error}</p>}
-            
+
             <button type="submit" className={styles.joinButton}>
-              JOIN WAITLIST
+              {isAuthLoading ? "Verifying..." : "JOIN WAITLIST"}
             </button>
           </form>
         </div>
